@@ -7,6 +7,10 @@ BLUE="\x1B[01;36m"
 RED="\x1B[01;31m"
 NOCOL="\x1B[0m"
 
+function printcmd() {
+  echo -e "${GREEN}$@${NOCOL}"
+}
+
 function runcmd() {
   echo -en "${BLUE}+ $@${NOCOL}">&2
   out=$($@ 2>&1)
