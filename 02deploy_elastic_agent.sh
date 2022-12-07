@@ -1,27 +1,7 @@
 #!/bin/bash
 
-export AZ_PROT_SETTINGS_FILE="protected-settings.json"
-export AZ_PUB_SETTINGS_FILE="public-settings.json"
-GREEN="\x1B[01;32m"
-BLUE="\x1B[01;36m"
-RED="\x1B[01;31m"
-NOCOL="\x1B[0m"
-
-function printcmd() {
-  echo -e "${GREEN}$@${NOCOL}"
-}
-
-function runcmd() {
-  echo -en "${BLUE}+ $@${NOCOL}">&2
-  out=$($@ 2>&1)
-  if [ $? -eq 0 ]; then
-    echo -e "${GREEN} -- success! ${NOCOL}"
-  else
-    echo -e "\n${RED}${out}${NOCOL}"
-    echo "exiting"
-    exit -1
-  fi
-}
+source ./helper_funcs.sh
+verify_files
 
 function usage() {
   echo -e "${RED}usage: $0 -g <azure_resource_group> -v <vmss_cluster_name>${NOCOL}"

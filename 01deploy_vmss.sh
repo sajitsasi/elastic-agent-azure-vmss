@@ -1,6 +1,8 @@
 #!/bin/bash 
 
 source ./00source_vars.sh
+source ./helper_funcs.sh
+verify_files
 
 # 1. Create resource group
 printcmd "Creating azure resource group ${AZ_RG}"
@@ -12,6 +14,7 @@ cat << EOF > 99delete_az_resources.sh
 az group delete -n ${AZ_RG} -y --no-wait
 /bin/rm -f 99delete_az_resources.sh .key .password
 EOF
+chmod +x 99delete_az_resources.sh
 
 # 2. Create VNET and subnets
 printcmd "Creating VNET (${AZ_VNET}) + VMSS subnet (${AZ_VMSS_SUBNET})"
