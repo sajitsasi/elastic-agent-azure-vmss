@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash 
 
 if [ -f ./.key ]; then
     KEY=$(cat .key)
@@ -37,5 +37,3 @@ export AZ_SLB="es-vmss-pub-lb"
 export AZ_LB_FE_NAME="es-vmss-fe"
 export AZ_LB_BE_NAME="es-vmss-be"
 export AZ_LB_OB_NAME="InternetOutboundRule"
-export AZ_PROT_SETTINGS_FILE="protected-settings.json"
-export AZ_PUB_SETTINGS_FILE="public-settings.json"
